@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"parcialtercio.HttpServer","l":"HttpServer"},{"p":"parcialtercio.Service","l":"ReadApiResponse"},{"p":"parcialtercio.Service","l":"ReadApiResponseImpl"}]
