@@ -49,10 +49,25 @@ public class HttpServer {
                     " <input required name=\"ciudad\" id=\"datos\" value=\"\">" +
                     "</div>" +
                     "</br>"+
-                    "<button>OBTENER</button>" +
+                    "<button onclick=\"getApiInfo()\">OBTENER</button>" +
                     "</form>"+
-                    "</body>"
-					+ "</html>"; 
+                    "</body>"+
+                    "<script src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js\" type=\"text/javascript\"></script>"+
+                    "<script>"+
+   "function getApiInfo(){\n"
+   + "		var city = $(\"#datos\").val();\n"
+   + "		$.ajax({\n"
+   + "			url: \"api.openweathermap.org/data/2.5/weather?q=\"+city+\"&appid=bb172fdb23943aab393ccec6c291b430\",\n"
+   + "			method: \"GET\",\n"
+   + "			success: function(response) { \n"
+   + "				console.log(response);  \n"
+   + "				var e = JSON.parse(response);\n"
+   + "			}\n"
+   + "		}); \n"
+   + "	}"+
+   					"</script>"+
+   
+					"</html>"; 
     out.println(outputLine);
     out.close(); 
     in.close(); 
