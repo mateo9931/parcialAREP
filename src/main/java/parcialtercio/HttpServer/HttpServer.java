@@ -21,8 +21,7 @@ public class HttpServer {
        System.err.println("Accept failed.");
        System.exit(1);
    }
-   
-  while (!serverSocket.isClosed()) {
+  
    PrintWriter out = new PrintWriter(
                          clientSocket.getOutputStream(), true);
    BufferedReader in = new BufferedReader(
@@ -33,20 +32,30 @@ public class HttpServer {
       if (!in.ready()) {break; }
    }
    outputLine = 
-          "<!DOCTYPE html>" + 
-          "<html>" + 
-          "<head>" + 
-          "<meta charset=\"UTF-8\">" + 
-          "<title>Title of the document</title>\n" + 
-          "</head>" + 
-          "<body>" + 
-          "<h1>Mi propio mensaje</h1>" + 
-          "</body>" + 
-          "</html>" + inputLine; 
+		   "HTTP/1.1 200 OK\r\n" 
+					+"Content-Type: text/html\r\n" 
+					+ "\r\n" 
+					+ "<!DOCTYPE html>" 
+					+ "<html>"
+					+ "<head>"
+					+ "<meta charset=\"UTF-8\">"
+					+ "<title>Title of the document</title>\n"
+					+ "</head>"+
+					"<div>" +
+                    "<h2>OBTEN EL CLIMA DADA LA CIUDAD QUE INGRESES</h2>" +
+                    "</div>"+
+                    "<form action=\"/consulta\" method=\"get\">" +
+                    "<div>" +
+                    " <input required name=\"ciudad\" id=\"datos\" value=\"\">" +
+                    "</div>" +
+                    "</br>"+
+                    "<button>OBTENER</button>" +
+                    "</form>"+
+                    "</body>"
+					+ "</html>"; 
     out.println(outputLine);
     out.close(); 
     in.close(); 
-  }
     clientSocket.close(); 
     serverSocket.close(); 
     }
